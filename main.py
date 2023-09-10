@@ -75,8 +75,9 @@ def find_password():
         messagebox.showerror(message='No Data File Found')
     else:
         try:
-            messagebox.showinfo(title=website, message=f"Email: {data[website]['username']}\nPassword: {data[website]['password']}")
-            pyperclip.copy(data[website]['password'])
+            username, password = data[website].values()
+            messagebox.showinfo(title=website, message=f"Email: {username}\nPassword: {password}")
+            pyperclip.copy(password)
         except KeyError:
             messagebox.showerror(message=f'No details for the {website} exists')
     finally:
